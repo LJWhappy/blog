@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+      <!--xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+      <!--xmlns:th="http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">   你俩就是巨坑巨坑的坑-->
+<head>
+    <meta charset="utf-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--thymeleaf  是在动态的页面的才能呢展现出来所以需要将项目运行起来-->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<h3 th:text="${userModel.title}"></h3>   此处用到的
+<div>
+    <a href="/users/form.html" th:href="@{/users/form}">${}</a>
+</div>
+<table border="1">
+    <thead>
+      <tr>
+          <td>ID</td>
+          <td>Email</td>
+          <td>Name</td>
+      </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="3">no information</td>
+    </tr>
+
+    <tr th:each="user : ${userModel.userList}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.name}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

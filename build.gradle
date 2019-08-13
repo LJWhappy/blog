@@ -1,0 +1,39 @@
+buildscript {
+       //用于定义动态属性
+        ext{
+              springBootVersion = '2.1.7.REALEASE'
+       }
+        //自定义thymeleaf
+        ext['thymeleaf.version']='3.0.3.RELEASE'
+        ext['thymeleaf-layout-dialect.version']='2.1.1'
+
+
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.21.RELEASE'
+              
+	}
+} 
+
+plugins {
+	id 'java'
+}
+
+apply plugin: 'org.springframework.boot'
+
+group = 'com.spring.thymeleaf'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+         //添加Thymeleaf的依赖
+        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	    compile 'org.springframework.boot:spring-boot-starter-web'
+	    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
